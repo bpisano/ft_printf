@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 19:03:21 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 19:08:02 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 16:09:42 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,7 +25,6 @@ void		resize_value(t_buff **buffer, t_arg *arg)
 	(*buffer)->value = join;
 	free(tmp);
 	free(zero);
-	free(join);
 }
 
 void		set_buff_value(t_buff **buffer, t_arg *arg)
@@ -43,13 +42,13 @@ void		set_buff_value(t_buff **buffer, t_arg *arg)
 	else if (percent_type(arg))
 		(*buffer)->value = ft_strdup("%");
 	else if (char_type(arg))
-		(*buffer)->value = ctos((arg->value)->schar);
+		(*buffer)->value = ft_ctos((arg->value)->schar);
 	else if (string_type(arg))
 	{
-		if (arg->prec < (int)ft_strlen((arg->value)->string))
+		if (arg->prec < (int)ft_strlen((arg->value)->string) && arg->prec != -1)
 			(*buffer)->value = ft_strsub((arg->value)->string, 0, arg->prec);
 		else
-			(*buffer)->value = (arg->value)->string;
+			(*buffer)->value = ft_strdup((arg->value)->string);
 	}
 	if (num_type(arg) && arg->prec > (int)ft_strlen((*buffer)->value))
 		resize_value(buffer, arg);
@@ -66,7 +65,7 @@ void		set_buff_sup(t_buff **buffer, t_arg *arg)
 	else if (int_type(arg) && (flag(arg, ' ') || flag(arg, '+')))
 	{
 		(*buffer)->sup_size = 1;
-		(*buffer)->sup = arg_v(arg) > 0 ? "+" : "-";
+		(*buffer)->sup = arg_v(arg) >= 0 ? "+" : "-";
 	}
 	else if (int_type(arg) && arg_v(arg) < 0)
 	{
@@ -80,7 +79,6 @@ void		set_buff_sup(t_buff **buffer, t_arg *arg)
 	}
 	else
 		(*buffer)->sup_size = 0;
-
 }
 
 void		set_buff_size(t_buff **buffer, t_arg *arg)

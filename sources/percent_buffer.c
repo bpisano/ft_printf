@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 12:15:39 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 19:34:48 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 16:57:04 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -54,7 +54,7 @@ static void		copy_sup(t_buff **buffer, t_arg *arg)
 	else if (oct_type(arg) && flag(arg, '#') && arg_v(arg) != 0)
 		ft_memcpy((*buffer)->buff + s_p, "0", s_s);
 	else if (int_type(arg) && flag(arg, '+'))
-		ft_memcpy((*buffer)->buff + s_p, arg_v(arg) < 0 ? "-" : "+", s_p);
+		ft_memcpy((*buffer)->buff + s_p, arg_v(arg) < 0 ? "-" : "+", s_s);
 	else if ((int_type(arg)) && arg_v(arg) < 0)
 		ft_memcpy((*buffer)->buff + s_p, "-", s_s);
 }
@@ -86,6 +86,8 @@ t_buff			*percent_buffer(char *format, va_list params)
 	set_buff_sup_pos(&buffer, arg);
 	init_buffer(&buffer, arg);
 	fill_buff(&buffer, arg);
+	//printf
+	free_arg(arg);
 	/*printf("value : %s\n", buffer->value);
 	printf("v_size : %d\n", buffer->v_size);
 	printf("buff_size : %d\n", buffer->buff_size);

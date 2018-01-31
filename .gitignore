@@ -1,5 +1,5 @@
 *.o
 *.a
-*.swp
 *.out
-libft/
+*.swp
+libft/*

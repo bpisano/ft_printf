@@ -6,14 +6,14 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 15:10:30 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 15:11:13 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 14:34:18 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ctos(char c)
+char	*ft_ctos(char c)
 {
 	char	*s;
 

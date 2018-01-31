@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 16:20:23 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 16:52:45 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 16:03:24 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,7 @@ char	*ft_itoa_base_arg(long long n, int base, t_arg *arg)
 		return (NULL);
 	s_base = arg->type == 'X' ? "0123456789ABCDEF" : "0123456789abcdef";
 	if (n < -9223372036854775807)
-		return ("9223372036854775808");
+		return (ft_strdup("9223372036854775808"));
 	if (n < 0)
 		nbr = ft_itoa_base_arg(-n, base, arg);
 	else

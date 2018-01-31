@@ -6,26 +6,26 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 11:54:50 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 19:41:13 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 16:02:27 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void		join_char(char **buff, char c)
+static void		ft_chrmerge(char **str, char c)
 {
 	char	*tmp;
 	char	*c_to_s;
 
-	tmp = *buff;
-	c_to_s = ctos(c);
-	*buff = ft_strjoin(*buff, c_to_s);
+	tmp = *str;
+	c_to_s = ft_ctos(c);
+	*str = ft_strjoin(*str, c_to_s);
 	free(tmp);
 	free(c_to_s);
 }
 
-static void		join_string(char **s1, char *s2)
+static void		ft_strmerge(char **s1, char *s2)
 {
 	char	*tmp;
 
@@ -48,7 +48,7 @@ static char		*main_buffer(char *format, va_list params, int *printed)
 		{
 			if (!(percent_buff = percent_buffer(format + i, params)))
 				return (NULL);
-			join_string(&buff, percent_buff->buff);
+			ft_strmerge(&buff, percent_buff->buff);
 			*printed += percent_buff->buff_size;
 			free_buff(percent_buff);
 			i++;
@@ -57,7 +57,7 @@ static char		*main_buffer(char *format, va_list params, int *printed)
 		}
 		else
 		{
-			join_char(&buff, format[i]);
+			ft_chrmerge(&buff, format[i]);
 			*printed += 1;
 		}
 		i++;
@@ -85,6 +85,6 @@ int		ft_printf(const char *restrict format, ...)
 /*
 int		main(void)
 {
-	ft_printf("test %d\n", -42);
+	ft_printf("%.10d\n", 42);
 	return (0);
 }*/
