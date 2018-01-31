@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 11:54:50 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 16:02:27 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 19:17:29 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -85,6 +85,8 @@ int		ft_printf(const char *restrict format, ...)
 /*
 int		main(void)
 {
-	ft_printf("%.10d\n", 42);
+	int i = 1;
+	ft_printf("-->%05c<--\n", 0);
+	printf("-->%05c<--\n", 0);
 	return (0);
 }*/

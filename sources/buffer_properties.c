@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 19:03:21 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 16:09:42 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 19:03:42 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,16 +29,16 @@ void		resize_value(t_buff **buffer, t_arg *arg)
 
 void		set_buff_value(t_buff **buffer, t_arg *arg)
 {
-	if (num_type(arg) && arg->prec == 0 && arg_v(arg) == 0)
+	if ((num_type(arg) || point_type(arg)) && arg->prec == 0 && arg_v(arg) == 0)
 		(*buffer)->value = ft_strnew(0);
 	else if (int_type(arg))
 		(*buffer)->value = ft_itoa_base_arg(arg_v(arg), 10, arg);
 	else if (uint_type(arg))
-		(*buffer)->value = ft_uitoa_base_arg(arg_v(arg), 10, arg);
+		(*buffer)->value = ft_uitoa_base_arg(uarg_v(arg), 10, arg);
 	else if (hex_type(arg) || point_type(arg))
-		(*buffer)->value = ft_uitoa_base_arg(arg_v(arg), 16, arg);
+		(*buffer)->value = ft_uitoa_base_arg(uarg_v(arg), 16, arg);
 	else if (oct_type(arg))
-		(*buffer)->value = ft_uitoa_base_arg(arg_v(arg), 8, arg);
+		(*buffer)->value = ft_uitoa_base_arg(uarg_v(arg), 8, arg);
 	else if (percent_type(arg))
 		(*buffer)->value = ft_strdup("%");
 	else if (char_type(arg))
@@ -57,7 +57,7 @@ void		set_buff_value(t_buff **buffer, t_arg *arg)
 
 void		set_buff_sup(t_buff **buffer, t_arg *arg)
 {
-	if ((hex_type(arg) || point_type(arg)) && flag(arg, '#') && arg_v(arg) != 0)
+	if ((hex_type(arg) && flag(arg, '#') && arg_v(arg) != 0) || point_type(arg))
 	{
 		(*buffer)->sup_size = 2;
 		(*buffer)->sup = arg->type == 'X' ? "0X" : "0x";
@@ -72,7 +72,7 @@ void		set_buff_sup(t_buff **buffer, t_arg *arg)
 		(*buffer)->sup_size = 1;
 		(*buffer)->sup = "-";
 	}
-	else if (oct_type(arg) && flag(arg, '#') && arg_v(arg) != 0 && arg->prec != 0)
+	else if (oct_type(arg) && flag(arg, '#'))
 	{
 		(*buffer)->sup_size = 1;
 		(*buffer)->sup = "0";

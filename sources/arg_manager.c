@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 12:46:37 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 18:17:24 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 18:37:20 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,6 +34,8 @@ t_arg	*new_arg(void)
 void	free_arg(t_arg *arg)
 {
 	free(arg->value);
+	if (arg->modifier)
+		free(arg->modifier);
 	free_flags(arg);
 	free(arg);
 	arg = NULL;
