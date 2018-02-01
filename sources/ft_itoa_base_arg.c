@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 16:20:23 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 16:03:24 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 18:25:44 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,10 +39,9 @@ char	*ft_uitoa_base_arg(unsigned long long n, unsigned int base, t_arg *arg)
 
 	if (!(nbr = (char *)ft_memalloc(sizeof(char))))
 		return (NULL);
-	s_base = arg->type == 'X' ? "0123456789ABCDEF" : "0123456789abcdef";	
+	s_base = arg->type == 'X' ? "0123456789ABCDEF" : "0123456789abcdef";
 	nbr = n < base ? ft_strdup(ft_strsub(s_base, n % base, 1)) :
 		ft_strjoin(ft_itoa_base_arg(n / base, base, arg),
 				ft_strsub(s_base, n % base, 1));
 	return (nbr);
 }
-

@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 14:38:43 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 17:24:53 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 18:25:12 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,14 +30,14 @@ unsigned long long	uarg_v(t_arg *arg)
 	if (ft_strcmp(arg->modifier, "j") == 0)
 		return (((arg->value)->uintmax));
 	if (ft_strcmp(arg->modifier, "z") == 0)
-		return (((arg->value)->sizet));	
+		return (((arg->value)->sizet));
 	return ((arg->value)->ullong);
 }
 
-long long	arg_v(t_arg *arg)
+long long			arg_v(t_arg *arg)
 {
 	if (arg->type == 'D' || arg->type == 'X' || arg->type == 'O')
-		return ((arg->value)->slong);	
+		return ((arg->value)->slong);
 	if (!(arg->modifier))
 		return ((arg->value)->sint);
 	if (ft_strcmp(arg->modifier, "hh") == 0)
@@ -55,7 +55,8 @@ long long	arg_v(t_arg *arg)
 	return ((arg->value)->sllong);
 }
 
-void 	set_arg_value(t_arg **arg, char type, int offset, va_list params)
+void				set_arg_value(
+		t_arg **arg, char type, int offset,va_list params)
 {
 	(*arg)->offset = offset;
 	if (!is_type(type) && ft_isalpha(type))

@@ -6,12 +6,12 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 12:46:37 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 18:37:20 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 18:52:01 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-# include "ft_printf.h"
+#include "ft_printf.h"
 
 t_arg	*new_arg(void)
 {
@@ -33,10 +33,10 @@ t_arg	*new_arg(void)
 
 void	free_arg(t_arg *arg)
 {
-	free(arg->value);
-	if (arg->modifier)
-		free(arg->modifier);
+	if (arg->value)
+		ft_memdel((void **)&(arg->value));
+	ft_strdel(&(arg->modifier));
 	free_flags(arg);
-	free(arg);
-	arg = NULL;
+	if (arg)
+		ft_memdel((void **)&arg);
 }

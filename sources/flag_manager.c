@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 12:49:17 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 18:42:31 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 18:53:07 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,11 +26,11 @@ t_flag	*new_flag(char flag)
 
 void	free_flag(t_flag *f)
 {
-	free(f);
-	f = NULL;
+	if (f)
+		ft_memdel((void **)&f);
 }
 
-void 	free_flags(t_arg *arg)
+void	free_flags(t_arg *arg)
 {
 	t_flag	*to_free;
 	t_flag	*current;
@@ -39,9 +39,8 @@ void 	free_flags(t_arg *arg)
 	while (current)
 	{
 		to_free = current;
-		free(to_free);
-		to_free = NULL;
 		current = current->next;
+		free_flag(to_free);	
 	}
 }
 

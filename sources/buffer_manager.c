@@ -6,14 +6,14 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 12:19:49 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 14:52:36 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 19:32:11 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-# include "ft_printf.h"
+#include "ft_printf.h"
 
-t_buff	*new_buff()
+t_buff	*new_buff(void)
 {
 	t_buff	*buffer;
 
@@ -32,7 +32,10 @@ t_buff	*new_buff()
 
 void	free_buff(t_buff *buffer)
 {
-	free(buffer->buff);
-	free(buffer->value);
-	free(buffer);
+	if (buffer->buff)
+		ft_memdel((void **)&(buffer->buff));
+	if (buffer->value)
+		ft_memdel((void **)&(buffer->value));
+	if (buffer)
+		ft_memdel((void **)&(buffer));
 }

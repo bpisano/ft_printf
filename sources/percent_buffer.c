@@ -6,12 +6,12 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 12:15:39 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 17:59:15 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 19:19:51 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-# include "ft_printf.h"
+#include "ft_printf.h"
 
 static void		init_buffer(t_buff **buffer, t_arg *arg)
 {
@@ -80,21 +80,13 @@ t_buff			*percent_buffer(char *format, va_list params)
 		buffer->buff = ft_strdup("(null)");
 		buffer->buff_size = 6;
 		return (buffer);
-	}	
+	}
 	set_buff_value(&buffer, arg);
 	set_buff_sup(&buffer, arg);
 	set_buff_size(&buffer, arg);
 	set_buff_sup_pos(&buffer, arg);
 	init_buffer(&buffer, arg);
 	fill_buff(&buffer, arg);
-	//printf("value : %s\n", ft_uitoa_base_arg(uarg_v(arg), 10, arg));
 	free_arg(arg);
-	//printf("value : \0\n", 0/*buffer->value*/);
-	//printf("v_size : %d\n", buffer->v_size);
-	//printf("buff_size : %d\n", buffer->buff_size);
-	//printf("sup : %s\n", buffer->sup);
-	//printf("sup_size : %d\n", buffer->sup_size);
-	//printf("sup_pos : %d\n", buffer->sup_pos);
-	//printf("%s\n", buffer->buff);
 	return (buffer);
 }

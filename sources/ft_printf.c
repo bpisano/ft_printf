@@ -6,13 +6,13 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 11:54:50 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 17:59:28 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 19:23:13 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
+/*
 static void		ft_strmerge(char **s1, int size1, char *s2, int size2)
 {
 	char	*tmp;
@@ -27,11 +27,11 @@ static void		ft_strmerge(char **s1, int size1, char *s2, int size2)
 		return ;
 	join = ft_strnew(size1 + size2);
 	ft_memcpy(join, *s1, size1);
-	ft_memcpy(join + size1, s2, size2);	
+	ft_memcpy(join + size1, s2, size2);
 	tmp = *s1;
 	*s1 = join;
-	free(tmp);
-	free(s2);
+	ft_strdel(&tmp);
+	ft_strdel(&s2);
 }
 
 static void		ft_chrmerge(char **str, int str_size, char c)
@@ -40,13 +40,13 @@ static void		ft_chrmerge(char **str, int str_size, char c)
 
 	c_to_s = ft_ctos(c);
 	ft_strmerge(str, str_size, c_to_s, 1);
-}
+}*/
 
 static char		*main_buffer(char *format, va_list params, int *printed)
 {
 	int		i;
 	char	*buff;
-	t_buff	*percent_buff;
+	t_buff	*p_buff;
 
 	i = 0;
 	buff = ft_strnew(0);
@@ -54,16 +54,16 @@ static char		*main_buffer(char *format, va_list params, int *printed)
 	{
 		if (format[i] == '%')
 		{
-			if (!(percent_buff = percent_buffer(format + i, params)))
+			if (!(p_buff = percent_buffer(format + i, params)))
 				return (buff);
-			ft_strmerge(&buff, *printed, percent_buff->buff, percent_buff->buff_size);
-			*printed += percent_buff->buff_size;
-			//free_buff(percent_buff);
-			i += percent_buff->arg_offset;
+			//ft_strmerge(&buff, *printed, p_buff->buff, p_buff->buff_size);
+			*printed += p_buff->buff_size;
+			free_buff(p_buff);
+			i += p_buff->arg_offset;
 		}
 		else
 		{
-			ft_chrmerge(&buff, *printed, format[i]);
+			//ft_chrmerge(&buff, *printed, format[i]);
 			*printed += 1;
 		}
 		i++;
@@ -71,9 +71,9 @@ static char		*main_buffer(char *format, va_list params, int *printed)
 	return (buff);
 }
 
-int		ft_printf(const char *restrict format, ...)
+int				ft_printf(const char *restrict format, ...)
 {
-	int			printed;	
+	int			printed;
 	va_list		params;
 	char		*f;
 	char		*buff;
@@ -85,16 +85,6 @@ int		ft_printf(const char *restrict format, ...)
 		return (-1);
 	write(1, buff, printed);
 	va_end(params);
-	free(buff);
+	ft_strdel(&buff);
 	return (printed);
 }
-/*
-int		main(void)
-{
-	int i = 1;
-	int *j = &i;
-
-	ft_printf("ft_printf -->%010.15d<--\n", 128);
-	printf("printf : -->%010d<--\n", 128);
-	return (0);
-}*/
