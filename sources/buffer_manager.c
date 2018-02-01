@@ -32,10 +32,7 @@ t_buff	*new_buff(void)
 
 void	free_buff(t_buff *buffer)
 {
-	if (buffer->buff)
-		ft_memdel((void **)&(buffer->buff));
-	if (buffer->value)
-		ft_memdel((void **)&(buffer->value));
-	if (buffer)
-		ft_memdel((void **)&(buffer));
+	ft_memdel((void **)&(buffer->buff));
+	ft_memdel((void **)&(buffer->value));
+	ft_memdel((void **)&(buffer));
 }
