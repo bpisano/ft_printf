@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 11:54:50 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 13:26:22 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 13:37:38 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 
 static void		ft_strmerge(char **s1, int size1, char *s2, int size2)
 {
-	int		i;
+	char	*tmp;
 	char	*join;
 
 	if (size1 == 0)
@@ -26,25 +26,12 @@ static void		ft_strmerge(char **s1, int size1, char *s2, int size2)
 	if (size2 == 0)
 		return ;
 	join = ft_strnew(size1 + size2);
-	i = 0;
-	while (i < size1)
-	{
-		join[i] = (*s1)[i];
-		i++;
-	}
-	while (i < size1 + size2)
-	{
-		join[i] = s2[i - size1];
-		i++;
-	}
-	//ft_memcpy(join, s1, size1);
-	//ft_memcpy(join + size1, s2, size2);
-	//printf("%s, %s, %d, %d\n", *s1, s2, size1, size2);
-	//write(1, join, size1 + size2);
-	//write(1, "\n", 1);
-	//tmp = *s1;
+	ft_memcpy(join, *s1, size1);
+	ft_memcpy(join + size1, s2, size2);	
+	tmp = *s1;
 	*s1 = join;
-	//free(tmp);
+	free(tmp);
+	free(s2);
 }
 
 static void		ft_chrmerge(char **str, int str_size, char c)
