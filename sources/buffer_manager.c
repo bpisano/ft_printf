@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 12:19:49 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 15:57:42 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 14:52:36 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,6 +26,7 @@ t_buff	*new_buff()
 	buffer->sup = NULL;
 	buffer->sup_size = 0;
 	buffer->sup_pos = 0;
+	buffer->arg_offset = 0;
 	return (buffer);
 }
 

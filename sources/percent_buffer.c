@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 12:15:39 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 13:11:30 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 17:59:15 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 
 static void		init_buffer(t_buff **buffer, t_arg *arg)
 {
-	if (flag(arg, '0') && !flag(arg, '-') && arg->prec <= 0)
+	if (flag(arg, '0') && !flag(arg, '-') && arg->prec == -1)
 		(*buffer)->buff = ft_strset('0', (*buffer)->buff_size);
 	else
 		(*buffer)->buff = ft_strset(' ', (*buffer)->buff_size);
@@ -74,12 +74,13 @@ t_buff			*percent_buffer(char *format, va_list params)
 		return (NULL);
 	if (!(buffer = new_buff()))
 		return (NULL);
+	buffer->arg_offset = arg->offset;
 	if (string_type(arg) && !(arg->value)->string && arg->f_width == 0)
 	{
 		buffer->buff = ft_strdup("(null)");
 		buffer->buff_size = 6;
 		return (buffer);
-	}
+	}	
 	set_buff_value(&buffer, arg);
 	set_buff_sup(&buffer, arg);
 	set_buff_size(&buffer, arg);

@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 11:19:03 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 18:42:13 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 14:50:49 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -54,6 +54,7 @@ typedef struct			s_arg
 	int					f_width;
 	int					prec;
 	char				*modifier;
+	int					offset;
 }						t_arg;
 
 /*
@@ -81,6 +82,6 @@ int						add_flag(t_arg *arg, char f);
 */
 long long				arg_v(t_arg *arg);
 unsigned long long		uarg_v(t_arg *arg);
-void					set_arg_value(t_arg **arg, va_list params);
+void					set_arg_value(t_arg **arg, char type, int offset, va_list params);
 
 #endif

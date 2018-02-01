@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 19:03:21 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 14:03:29 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 15:24:12 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -51,6 +51,8 @@ void		set_buff_value(t_buff **buffer, t_arg *arg)
 			(*buffer)->value = ft_strdup((arg->value)->string);
 	}
 	if (num_type(arg) && arg->prec > (int)ft_strlen((*buffer)->value))
+		resize_value(buffer, arg);
+	if (point_type(arg) && arg->prec > (int)ft_strlen((*buffer)->value))
 		resize_value(buffer, arg);
 	(*buffer)->v_size = char_type(arg) ? 1 : ft_strlen((*buffer)->value);
 }
