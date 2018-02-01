@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 11:54:50 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 13:37:38 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 14:04:02 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -94,7 +94,10 @@ int		ft_printf(const char *restrict format, ...)
 int		main(void)
 {
 	int i = 1;
-	ft_printf("-->null %c and text<--\n", 0);
-	printf("-->null %c and text<--\n", 0);
+	int *j = &i;
+	ft_printf("-->%o %.o %#o %#.o<--\n", 0, 0, 0, 0);
+	ft_printf("-->%d %.d<--\n", 0, 0);
+	printf("-->%o %.o %#o %#.o<--\n", 0, 0, 0, 0);
+	printf("-->%d %.d<--\n", 0, 0);
 	return (0);
 }*/

@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 14:38:43 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 16:57:05 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 13:43:32 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 
 unsigned long long	uarg_v(t_arg *arg)
 {
-	if (arg->type == 'U' || arg->type == 'O')
+	if (arg->type == 'U' || arg->type == 'O' || point_type(arg))
 		return ((arg->value)->ulong);
 	if (!(arg->modifier))
 		return ((arg->value)->uint);
@@ -37,9 +37,7 @@ unsigned long long	uarg_v(t_arg *arg)
 long long	arg_v(t_arg *arg)
 {
 	if (arg->type == 'D' || arg->type == 'X' || arg->type == 'O')
-		return ((arg->value)->slong);
-	if (point_type(arg))
-		return ((arg->value)->slong);
+		return ((arg->value)->slong);	
 	if (!(arg->modifier))
 		return ((arg->value)->sint);
 	if (ft_strcmp(arg->modifier, "hh") == 0)

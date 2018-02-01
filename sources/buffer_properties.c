@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 19:03:21 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 13:03:02 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 14:03:29 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -72,7 +72,7 @@ void		set_buff_sup(t_buff **buffer, t_arg *arg)
 		(*buffer)->sup_size = 1;
 		(*buffer)->sup = "-";
 	}
-	else if (oct_type(arg) && flag(arg, '#'))
+	else if (oct_type(arg) && flag(arg, '#') && (arg->prec != -1 || arg_v(arg) != 0))
 	{
 		(*buffer)->sup_size = 1;
 		(*buffer)->sup = "0";
