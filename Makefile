@@ -6,7 +6,7 @@
 #    By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/31 12:15:53 by bpisano      #+#   ##    ##    #+#        #
-#    Updated: 2018/02/01 12:10:30 by bpisano     ###    #+. /#+    ###.fr      #
+#    Updated: 2018/02/01 18:12:38 by bpisano     ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -30,7 +30,7 @@ SRC = ./sources/ft_printf.c				\
 
 LIBSRC = ./libft/*.c
 
-OBJECTS = $(SRC:.c=.o) $(LIBSRC:.c=.o)
+OBJECTS = $(SRC:.c=.o)
 
 LIB = libft.a
 
@@ -48,9 +48,10 @@ END = \033[0m
 all: $(NAME)
 
 $(LIB):
-	@(cd libft/ && make)
+	@(make -C libft)
 
 $(NAME): $(LIB) $(OBJECTS)
+	@cp libft/$(LIB) $(NAME)
 	@ar rc $(NAME) $(OBJECTS)
 	@echo "$(BLUE)$(NAME)\033[500D\033[42C$(GREEN)[DONE]$(END)"
 
@@ -61,11 +62,11 @@ $(NAME): $(LIB) $(OBJECTS)
 
 clean:
 	@rm -f $(OBJECTS)
-	@(cd libft/ && make clean)
+	@make clean -C libft
 
 fclean: clean
 	@rm -f $(NAME)
 	@rm -f a.out
-	@(cd libft/ && make fclean)
+	@make fclean -C libft
 
 re: fclean all
