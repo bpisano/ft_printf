@@ -6,7 +6,7 @@
 #    By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/31 12:15:53 by bpisano      #+#   ##    ##    #+#        #
-#    Updated: 2018/01/31 15:25:00 by bpisano     ###    #+. /#+    ###.fr      #
+#    Updated: 2018/02/01 12:10:30 by bpisano     ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -65,8 +65,7 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
+	@rm -f a.out
 	@(cd libft/ && make fclean)
 
 re: fclean all
-	@(cd libft/ && make re)
-

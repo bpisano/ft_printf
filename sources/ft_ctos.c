@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 15:10:30 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 14:34:18 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 13:06:15 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,9 +17,8 @@ char	*ft_ctos(char c)
 {
 	char	*s;
 
-	if (!(s = (char *)malloc(sizeof(char) * 2)))
+	if (!(s = ft_strnew(1)))
 		return (NULL);
 	s[0] = c;
-	s[1] = '\0';
 	return (s);
 }

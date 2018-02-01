@@ -6,32 +6,53 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 11:54:50 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 19:17:29 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 13:26:22 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void		ft_chrmerge(char **str, char c)
+static void		ft_strmerge(char **s1, int size1, char *s2, int size2)
 {
-	char	*tmp;
-	char	*c_to_s;
+	int		i;
+	char	*join;
 
-	tmp = *str;
-	c_to_s = ft_ctos(c);
-	*str = ft_strjoin(*str, c_to_s);
-	free(tmp);
-	free(c_to_s);
+	if (size1 == 0)
+	{
+		*s1 = s2;
+		return ;
+	}
+	if (size2 == 0)
+		return ;
+	join = ft_strnew(size1 + size2);
+	i = 0;
+	while (i < size1)
+	{
+		join[i] = (*s1)[i];
+		i++;
+	}
+	while (i < size1 + size2)
+	{
+		join[i] = s2[i - size1];
+		i++;
+	}
+	//ft_memcpy(join, s1, size1);
+	//ft_memcpy(join + size1, s2, size2);
+	//printf("%s, %s, %d, %d\n", *s1, s2, size1, size2);
+	//write(1, join, size1 + size2);
+	//write(1, "\n", 1);
+	//tmp = *s1;
+	*s1 = join;
+	//free(tmp);
 }
 
-static void		ft_strmerge(char **s1, char *s2)
+static void		ft_chrmerge(char **str, int str_size, char c)
 {
-	char	*tmp;
+	char	*c_to_s;
 
-	tmp = *s1;
-	*s1 = ft_strjoin(*s1, s2);
-	free(tmp);
+	c_to_s = ft_ctos(c);
+	ft_strmerge(str, str_size, c_to_s, 1);
 }
 
 static char		*main_buffer(char *format, va_list params, int *printed)
@@ -48,16 +69,16 @@ static char		*main_buffer(char *format, va_list params, int *printed)
 		{
 			if (!(percent_buff = percent_buffer(format + i, params)))
 				return (NULL);
-			ft_strmerge(&buff, percent_buff->buff);
+			ft_strmerge(&buff, *printed, percent_buff->buff, percent_buff->buff_size);
 			*printed += percent_buff->buff_size;
-			free_buff(percent_buff);
+			//free_buff(percent_buff);
 			i++;
 			while (!is_type(format[i]))
 				i++;
 		}
 		else
 		{
-			ft_chrmerge(&buff, format[i]);
+			ft_chrmerge(&buff, *printed, format[i]);
 			*printed += 1;
 		}
 		i++;
@@ -86,7 +107,7 @@ int		ft_printf(const char *restrict format, ...)
 int		main(void)
 {
 	int i = 1;
-	ft_printf("-->%05c<--\n", 0);
-	printf("-->%05c<--\n", 0);
+	ft_printf("-->null %c and text<--\n", 0);
+	printf("-->null %c and text<--\n", 0);
 	return (0);
 }*/

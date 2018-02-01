@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 12:15:39 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 19:03:44 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 13:11:30 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -88,12 +88,12 @@ t_buff			*percent_buffer(char *format, va_list params)
 	fill_buff(&buffer, arg);
 	//printf("value : %s\n", ft_uitoa_base_arg(uarg_v(arg), 10, arg));
 	free_arg(arg);
-	/*printf("value : %s\n", buffer->value);
-	printf("v_size : %d\n", buffer->v_size);
-	printf("buff_size : %d\n", buffer->buff_size);
-	printf("sup : %s\n", buffer->sup);
-	printf("sup_size : %d\n", buffer->sup_size);
-	printf("sup_pos : %d\n", buffer->sup_pos);
-	printf("%s\n", buffer->buff);*/
+	//printf("value : \0\n", 0/*buffer->value*/);
+	//printf("v_size : %d\n", buffer->v_size);
+	//printf("buff_size : %d\n", buffer->buff_size);
+	//printf("sup : %s\n", buffer->sup);
+	//printf("sup_size : %d\n", buffer->sup_size);
+	//printf("sup_pos : %d\n", buffer->sup_pos);
+	//printf("%s\n", buffer->buff);
 	return (buffer);
 }
