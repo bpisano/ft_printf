@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 13:58:46 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/02 15:16:53 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/02 15:56:44 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -82,7 +82,7 @@ t_arg			*get_arg(char *format, va_list params, int i)
 		else
 			break ;
 	}
-	if (!is_type(format[i]) && !ft_isalpha(format[i]))
+	if ((!is_type(format[i]) && !ft_isascii(format[i])) || !format[i])
 	{
 		free_arg(arg);
 		return (NULL);
