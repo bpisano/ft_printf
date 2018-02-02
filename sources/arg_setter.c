@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 13:58:46 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 18:21:56 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/02 14:55:19 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,8 @@
 
 static void		set_flag(t_arg **arg, char f, int *i)
 {
-	add_flag(*arg, f);
+	if (!flag(*arg, f))
+		add_flag(*arg, f);
 	*i += 1;
 }
 
@@ -84,7 +85,10 @@ t_arg			*get_arg(char *format, va_list params)
 			break ;
 	}
 	if (!is_type(format[i]) && !ft_isalpha(format[i]))
+	{
+		free_arg(arg);
 		return (NULL);
+	}
 	set_arg_value(&arg, format[i], i, params);
 	return (arg);
 }

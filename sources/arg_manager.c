@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 12:46:37 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 18:52:01 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/02 14:20:41 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -33,10 +33,8 @@ t_arg	*new_arg(void)
 
 void	free_arg(t_arg *arg)
 {
-	if (arg->value)
-		ft_memdel((void **)&(arg->value));
+	ft_memdel((void **)&(arg->value));
 	ft_strdel(&(arg->modifier));
 	free_flags(arg);
-	if (arg)
-		ft_memdel((void **)&arg);
+	ft_memdel((void **)&arg);
 }

@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 14:38:43 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 18:25:12 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/02 15:03:17 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -56,7 +56,7 @@ long long			arg_v(t_arg *arg)
 }
 
 void				set_arg_value(
-		t_arg **arg, char type, int offset,va_list params)
+		t_arg **arg, char type, int offset, va_list params)
 {
 	(*arg)->offset = offset;
 	if (!is_type(type) && ft_isalpha(type))

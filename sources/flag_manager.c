@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 12:49:17 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 18:53:07 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/02 14:51:46 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,7 +40,7 @@ void	free_flags(t_arg *arg)
 	{
 		to_free = current;
 		current = current->next;
-		free_flag(to_free);	
+		free_flag(to_free);
 	}
 }
 

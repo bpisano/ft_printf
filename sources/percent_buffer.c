@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 12:15:39 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 19:19:51 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/02 14:24:30 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -79,6 +79,7 @@ t_buff			*percent_buffer(char *format, va_list params)
 	{
 		buffer->buff = ft_strdup("(null)");
 		buffer->buff_size = 6;
+		free_arg(arg);
 		return (buffer);
 	}
 	set_buff_value(&buffer, arg);
