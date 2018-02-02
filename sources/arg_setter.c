@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 13:58:46 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/02 14:55:19 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/02 15:16:53 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -63,14 +63,12 @@ static void		set_modifier(t_arg **arg, char *format, int *i)
 	*i += j;
 }
 
-t_arg			*get_arg(char *format, va_list params)
+t_arg			*get_arg(char *format, va_list params, int i)
 {
-	int		i;
 	t_arg	*arg;
 
 	if (!(arg = new_arg()))
 		return (NULL);
-	i = 1;
 	while (!is_type(format[i]) && format[i])
 	{
 		if (is_flag(format[i]))

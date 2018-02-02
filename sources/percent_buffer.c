@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 12:15:39 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/02 14:24:30 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/02 15:13:55 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -70,7 +70,7 @@ t_buff			*percent_buffer(char *format, va_list params)
 	t_arg	*arg;
 	t_buff	*buffer;
 
-	if (!(arg = get_arg(format, params)))
+	if (!(arg = get_arg(format, params, 1)))
 		return (NULL);
 	if (!(buffer = new_buff()))
 		return (NULL);
