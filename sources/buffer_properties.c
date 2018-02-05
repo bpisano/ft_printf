@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 19:03:21 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 18:23:14 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 12:29:52 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,6 +23,7 @@ void		resize_value(t_buff **buffer, t_arg *arg)
 	join = ft_strjoin(zero, (*buffer)->value);
 	tmp = (*buffer)->value;
 	(*buffer)->value = join;
+	(*buffer)->resized_value = 1;
 	free(tmp);
 	free(zero);
 }
@@ -41,7 +42,7 @@ void		set_buff_value(t_buff **buffer, t_arg *arg)
 		(*buffer)->value = ft_uitoa_base_arg(uarg_v(arg), 8, arg);
 	else if (percent_type(arg))
 		(*buffer)->value = ft_strdup("%");
-	else if (char_type(arg))
+	else if (char_type(arg) || (alpha_type(arg) && arg_v(arg) == 0))
 		(*buffer)->value = ft_ctos((arg->value)->schar);
 	else if (string_type(arg))
 	{
@@ -74,6 +75,7 @@ void		set_buff_sup(t_buff **buffer, t_arg *arg)
 		(*buffer)->sup = "-";
 	}
 	else if (oct_type(arg) && flag(arg, '#')
+			&& !(*buffer)->resized_value
 			&& (arg->prec != -1 || arg_v(arg) != 0))
 	{
 		(*buffer)->sup_size = 1;

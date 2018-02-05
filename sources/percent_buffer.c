@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 12:15:39 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/02 15:13:55 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 13:09:19 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,9 @@
 
 static void		init_buffer(t_buff **buffer, t_arg *arg)
 {
-	if (flag(arg, '0') && !flag(arg, '-') && arg->prec == -1)
+	if (flag(arg, '0')
+			&& !flag(arg, '-')
+			&& (arg->prec == -1 || !num_type(arg)))
 		(*buffer)->buff = ft_strset('0', (*buffer)->buff_size);
 	else
 		(*buffer)->buff = ft_strset(' ', (*buffer)->buff_size);

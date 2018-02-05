@@ -1,5 +1,7 @@
 *.o
 *.a
 *.swp
+*.out
+*.sh
 main.c
 libft/*

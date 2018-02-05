@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 11:16:36 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 14:52:08 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 12:28:44 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,6 +26,7 @@ typedef struct	s_buff
 	int			sup_size;
 	int			sup_pos;
 	int			arg_offset;
+	int			resized_value;
 }				t_buff;
 
 t_buff			*new_buff();
