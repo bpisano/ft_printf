@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 19:03:21 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 12:29:52 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/06 15:14:51 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -76,7 +76,8 @@ void		set_buff_sup(t_buff **buffer, t_arg *arg)
 	}
 	else if (oct_type(arg) && flag(arg, '#')
 			&& !(*buffer)->resized_value
-			&& (arg->prec != -1 || arg_v(arg) != 0))
+			&& (arg->prec != -1 || arg_v(arg) != 0)
+			&& ((arg->prec != 1 || arg->prec != 1) || arg_v(arg) != 0))
 	{
 		(*buffer)->sup_size = 1;
 		(*buffer)->sup = "0";
@@ -97,8 +98,13 @@ void		set_buff_sup_pos(t_buff **buffer, t_arg *arg)
 {
 	int		pos;
 
-	pos = (*buffer)->buff_size - (*buffer)->v_size - (*buffer)->sup_size;
-	if (flag(arg, '0') || flag(arg, '-'))
+	if (flag(arg, '0')
+			&& !(*buffer)->resized_value && !oct_type(arg)
+			&& arg->prec == -1)
 		pos = 0;
+	else if (flag(arg, '-'))
+		pos = 0;
+	else
+		pos = (*buffer)->buff_size - (*buffer)->v_size - (*buffer)->sup_size;
 	(*buffer)->sup_pos = pos;
 }

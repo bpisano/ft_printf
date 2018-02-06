@@ -6,7 +6,7 @@
 #    By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/31 12:15:53 by bpisano      #+#   ##    ##    #+#        #
-#    Updated: 2018/02/02 11:51:51 by bpisano     ###    #+. /#+    ###.fr      #
+#    Updated: 2018/02/06 13:46:23 by bpisano     ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -14,8 +14,6 @@
 NAME = libftprintf.a
 
 SRC = ./sources/ft_printf.c				\
-	  ./sources/ft_strset.c				\
-	  ./sources/ft_ctos.c				\
 	  ./sources/ft_itoa_base_arg.c		\
 	  ./sources/alpha_type_manager.c	\
 	  ./sources/num_type_manager.c		\

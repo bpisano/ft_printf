@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 13:58:46 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/02 15:56:44 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/06 15:54:17 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,11 +20,23 @@ static void		set_flag(t_arg **arg, char f, int *i)
 	*i += 1;
 }
 
-static void		set_f_width(t_arg **arg, char *format, int *i)
+static void		set_f_width(t_arg **arg, char *format, va_list params, int *i)
 {
 	int		j;
 
+	if (format[0] == '*')
+	{
+		(*arg)->f_width = va_arg(params, int);
+		if ((*arg)->f_width < 0)
+		{
+			(*arg)->f_width = -((*arg)->f_width);
+			add_flag((*arg), '-');
+		}
+		*i += 1;
+		return ;
+	}
 	j = 0;
+	(*arg)->f_width = 0;
 	while (ft_isdigit(format[j]))
 	{
 		(*arg)->f_width = (*arg)->f_width * 10 + format[j] - 48;
@@ -33,10 +45,18 @@ static void		set_f_width(t_arg **arg, char *format, int *i)
 	*i += j;
 }
 
-static void		set_precision(t_arg **arg, char *format, int *i)
+static void		set_precision(t_arg **arg, char *format, va_list params, int *i)
 {
 	int		j;
 
+	if (format[0] == '*')
+	{
+		(*arg)->prec = va_arg(params, int);
+		if ((*arg)->prec < 0)
+			(*arg)->prec = -1;
+		*i += 2;
+		return ;
+	}
 	j = 0;
 	(*arg)->prec = 0;
 	while (ft_isdigit(format[j]))
@@ -73,10 +93,10 @@ t_arg			*get_arg(char *format, va_list params, int i)
 	{
 		if (is_flag(format[i]))
 			set_flag(&arg, format[i], &i);
-		else if (ft_isdigit(format[i]) && format[i] != 0)
-			set_f_width(&arg, format + i, &i);
+		else if ((ft_isdigit(format[i]) && format[i] != 0) || format[i] == '*')
+			set_f_width(&arg, format + i, params, &i);
 		else if (format[i] == '.')
-			set_precision(&arg, format + i + 1, &i);
+			set_precision(&arg, format + i + 1, params, &i);
 		else if (is_modifier(format[i]))
 			set_modifier(&arg, format + i, &i);
 		else
