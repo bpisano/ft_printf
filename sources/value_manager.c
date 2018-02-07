@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 14:38:43 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/06 15:33:57 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/07 17:42:01 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -66,7 +66,9 @@ void				set_arg_value(
 		return ;
 	}
 	(*arg)->type = type;
-	if (string_type(*arg))
+	if (percent_type(*arg))
+		((*arg)->value)->string = "%";
+	else if (string_type(*arg))
 		((*arg)->value)->string = va_arg(params, char *);
 	else if (!int_type(*arg))
 		((*arg)->value)->ullong = va_arg(params, unsigned long long);
