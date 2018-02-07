@@ -6,7 +6,7 @@
 /*   By: bpisano <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 11:54:50 by bpisano      #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 17:04:18 by bpisano     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/07 18:15:41 by bpisano     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,7 @@ static void		main_buffer(char *format, va_list params, int *printed)
 	while (format[i])
 	{
 		if (format[i] == '%')
-		{	
+		{
 			if (!(p_buff = percent_buffer(format + i, params)))
 				return ;
 			write(1, p_buff->buff, p_buff->buff_size);
